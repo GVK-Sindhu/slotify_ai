@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15-alpine
+    container_name: slotify-db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=slotify_db
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d slotify_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  api:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: slotify-api
+    ports:
+      - "5000:5000"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Host=db;Database=slotify_db;Username=postgres;Password=postgres
+      - Jwt__Secret=SlotifyAiSuperSecretKeyForDevelopmentPurposes12345!
+      - Jwt__Issuer=SlotifyAi
+      - Jwt__Audience=SlotifyAiClients
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  postgres_data:

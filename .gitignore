@@ -1,0 +1,37 @@
+# Instruction PDF
+Full Stack Problem Statement 23_05_26.pdf
+
+# Environment files
+.env
+.env.local
+.env.production
+.env.development
+
+# Node / Frontend dependencies
+frontend/node_modules/
+frontend/dist/
+frontend/src/**/*.tsbuildinfo
+frontend/.svelte-kit/
+frontend/.next/
+
+# .NET / C# dependencies
+**/bin/
+**/obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# IDE files
+.vs/
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln.docstates
+
+# OS files
+Thumbs.db
+Desktop.ini
+.DS_Store
