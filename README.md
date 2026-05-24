@@ -4,7 +4,7 @@ Slotify AI is an AI-powered marketing and real-time slot reservation system for 
 
 ---
 
-## 🛠️ Tech Stack & Architecture
+##  Tech Stack & Architecture
 
 ### Backend (Clean Architecture)
 - **Framework**: `.NET 8 Web API`
@@ -21,7 +21,7 @@ Slotify AI is an AI-powered marketing and real-time slot reservation system for 
 
 ---
 
-## ⚡ Running the Project
+##  Running the Project
 
 The system is designed with a **Dual-Mode API Architecture**:
 1. **Mock API Mode (Default)**: Runs entirely client-side using `localStorage`. Ideal for immediate review and testing without launching database servers.
@@ -60,7 +60,7 @@ To switch the frontend from Mock Mode to communicate with the live .NET containe
 
 ---
 
-## 📋 Implemented Features (Vetted against Requirements)
+##  Implemented Features (Vetted against Requirements)
 
 ### A. Admin Dashboard & Login
 - **Authentication**: JWT token storage, credentials validation, and private routing.
@@ -97,7 +97,7 @@ To switch the frontend from Mock Mode to communicate with the live .NET containe
 
 ---
 
-## 🏗️ Project Folder Structure
+##  Project Folder Structure
 
 ```
 ├── backend
