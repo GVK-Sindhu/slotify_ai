@@ -39,6 +39,117 @@ Slotify AI is an AI-powered marketing and real-time slot reservation system for 
 - **Animations**: `Framer Motion` for state transitions and hover micro-animations
 - **Charts**: `Recharts` for analytics, demand patterns, and capacity allocation gauges
 
+### 📊 Database Schema & Entity-Relationship (ER) Diagram
+
+Slotify AI uses a structured PostgreSQL schema mapped using Entity Framework Core. Below is the relational model showing how users, businesses, offers, slots, bookings, and notifications are linked:
+
+```mermaid
+erDiagram
+    USER ||--o| BUSINESS : "manages"
+    BUSINESS ||--o{ OFFER : "hosts"
+    OFFER ||--o{ OFFER_SLOT : "defines"
+    OFFER_SLOT ||--o{ BOOKING : "contains"
+    BOOKING ||--o{ NOTIFICATION_LOG : "triggers"
+
+    USER {
+        Guid Id PK
+        string Email
+        string PasswordHash
+        string FullName
+        DateTime CreatedAt
+        DateTime UpdatedAt
+    }
+
+    BUSINESS {
+        Guid Id PK
+        Guid UserId FK
+        string Name
+        BusinessType Type
+        string OwnerName
+        string Phone
+        string Email
+        string Address
+        string City
+        string LogoUrl
+        TimeSpan OpeningTime
+        TimeSpan ClosingTime
+        DateTime CreatedAt
+        DateTime UpdatedAt
+    }
+
+    OFFER {
+        Guid Id PK
+        Guid BusinessId FK
+        string Title
+        string Description
+        string Category
+        decimal OriginalPrice
+        decimal OfferPrice
+        DateTime StartDate
+        DateTime EndDate
+        TimeSpan StartTime
+        TimeSpan EndTime
+        int TotalCapacity
+        int MaxBookingPerCustomer
+        string TermsAndConditions
+        string BannerImageUrl
+        OfferStatus Status
+        bool IsDeleted
+        DateTime CreatedAt
+        DateTime UpdatedAt
+    }
+
+    OFFER_SLOT {
+        Guid Id PK
+        Guid OfferId FK
+        DateTime SlotDate
+        TimeSpan StartTime
+        TimeSpan EndTime
+        int Capacity
+        int BookedCount
+        SlotStatus Status
+        DateTime CreatedAt
+        DateTime UpdatedAt
+    }
+
+    BOOKING {
+        Guid Id PK
+        Guid SlotId FK
+        string ReferenceNumber
+        string CustomerName
+        string PhoneNumber
+        string Email
+        int PeopleCount
+        string SpecialNote
+        BookingStatus Status
+        PaymentStatus PaymentStatus
+        string CouponCode
+        bool JoinedWaitlist
+        DateTime CreatedAt
+        DateTime UpdatedAt
+    }
+
+    NOTIFICATION_LOG {
+        Guid Id PK
+        Guid BookingId FK
+        string CustomerName
+        string Type
+        string Destination
+        string Message
+        string Status
+        DateTime Timestamp
+    }
+
+    COUPON {
+        string Code PK
+        string DiscountType
+        decimal Value
+        decimal MinBookingValue
+        bool IsActive
+        DateTime CreatedAt
+    }
+```
+
 ---
 
 ##  Running the Project
