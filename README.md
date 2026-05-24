@@ -52,92 +52,92 @@ erDiagram
     BOOKING ||--o{ NOTIFICATION_LOG : "triggers"
 
     USER {
-        Guid Id PK
+        guid Id PK
         string Email
         string PasswordHash
         string FullName
-        DateTime CreatedAt
-        DateTime UpdatedAt
+        datetime CreatedAt
+        datetime UpdatedAt
     }
 
     BUSINESS {
-        Guid Id PK
-        Guid UserId FK
+        guid Id PK
+        guid UserId FK
         string Name
-        BusinessType Type
+        string Type
         string OwnerName
         string Phone
         string Email
         string Address
         string City
         string LogoUrl
-        TimeSpan OpeningTime
-        TimeSpan ClosingTime
-        DateTime CreatedAt
-        DateTime UpdatedAt
+        timespan OpeningTime
+        timespan ClosingTime
+        datetime CreatedAt
+        datetime UpdatedAt
     }
 
     OFFER {
-        Guid Id PK
-        Guid BusinessId FK
+        guid Id PK
+        guid BusinessId FK
         string Title
         string Description
         string Category
         decimal OriginalPrice
         decimal OfferPrice
-        DateTime StartDate
-        DateTime EndDate
-        TimeSpan StartTime
-        TimeSpan EndTime
+        datetime StartDate
+        datetime EndDate
+        timespan StartTime
+        timespan EndTime
         int TotalCapacity
         int MaxBookingPerCustomer
         string TermsAndConditions
         string BannerImageUrl
-        OfferStatus Status
-        bool IsDeleted
-        DateTime CreatedAt
-        DateTime UpdatedAt
+        string Status
+        boolean IsDeleted
+        datetime CreatedAt
+        datetime UpdatedAt
     }
 
     OFFER_SLOT {
-        Guid Id PK
-        Guid OfferId FK
-        DateTime SlotDate
-        TimeSpan StartTime
-        TimeSpan EndTime
+        guid Id PK
+        guid OfferId FK
+        datetime SlotDate
+        timespan StartTime
+        timespan EndTime
         int Capacity
         int BookedCount
-        SlotStatus Status
-        DateTime CreatedAt
-        DateTime UpdatedAt
+        string Status
+        datetime CreatedAt
+        datetime UpdatedAt
     }
 
     BOOKING {
-        Guid Id PK
-        Guid SlotId FK
+        guid Id PK
+        guid SlotId FK
         string ReferenceNumber
         string CustomerName
         string PhoneNumber
         string Email
         int PeopleCount
         string SpecialNote
-        BookingStatus Status
-        PaymentStatus PaymentStatus
+        string Status
+        string PaymentStatus
         string CouponCode
-        bool JoinedWaitlist
-        DateTime CreatedAt
-        DateTime UpdatedAt
+        boolean JoinedWaitlist
+        datetime CreatedAt
+        datetime UpdatedAt
     }
 
     NOTIFICATION_LOG {
-        Guid Id PK
-        Guid BookingId FK
+        guid Id PK
+        guid BookingId FK
         string CustomerName
         string Type
         string Destination
         string Message
         string Status
-        DateTime Timestamp
+        datetime Timestamp
     }
 
     COUPON {
@@ -145,8 +145,8 @@ erDiagram
         string DiscountType
         decimal Value
         decimal MinBookingValue
-        bool IsActive
-        DateTime CreatedAt
+        boolean IsActive
+        datetime CreatedAt
     }
 ```
 
