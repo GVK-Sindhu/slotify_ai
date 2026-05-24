@@ -4,15 +4,15 @@ Slotify AI is an AI-powered marketing and real-time slot reservation system for 
 
 ---
 
-## 📸 Visual Tour & System Preview
+##  Visual Tour & System Preview
 
-### 🌐 Public Storefront
+###  Public Storefront
 
 | Public Offers Listing (Home) | Offer Details & Slot Booking |
 |:---:|:---:|
 | ![Public Offers Listing](images/frontend_home.png) | ![Offer Details & Booking](images/frontend_booking.png) |
 
-### 🔑 Admin Management Portal
+###  Admin Management Portal
 
 | Admin Insights & AI Recommendations | Campaign Settings & Slot Management |
 |:---:|:---:|
